@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard JB Facturation</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+
+    <img src="logo.png" class="logo">
+
+    <div class="company-info">
+        <h1>📊 Dashboard Financier</h1>
+        <p>Suivi des ventes et factures</p>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <!-- ACTIONS -->
+    <div class="top-actions">
+
+        <button onclick="goInvoice()">
+            ➕ Nouvelle Facture
+        </button>
+
+        <button onclick="loadDashboard()">
+            🔄 Actualiser
+        </button>
+
+        <button onclick="exportExcel()">
+            📁 Export Excel
+        </button>
+
+        <button onclick="resetAllSales()">
+            🗑️ Tout supprimer
+        </button>
+
+    </div>
+
+    <!-- STATISTIQUES -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Aujourd'hui</h3>
+            <p id="todaySales">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Ce mois</h3>
+            <p id="monthSales">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Global</h3>
+            <p id="globalSales">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Factures</h3>
+            <p id="invoiceCount">0</p>
+        </div>
+
+    </div>
+
+    <!-- RECHERCHE -->
+    <input
+        id="searchClient"
+        placeholder="🔍 Rechercher un client..."
+        onkeyup="filterClient()">
+    >
+
+    <!-- TABLEAU -->
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Téléphone</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="salesTable">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- MODAL DUPLICATA -->
+<div id="invoiceModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Duplicata Facture</h2>
+
+            <button onclick="closeModal()">
+                ✖
+                
+            </button>
+
+        </div>
+
+        <div id="invoiceDetails">
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button onclick="printSelectedInvoice()">
+                🖨️ Réimprimer
+            </button>
+
+            <button onclick="closeModal()">
+                Fermer
+            </button>
+
+        </div>
+    </h2> Rapport des ventes</h2>
+    <canvas id="salesChart"></canvas>
+    </div>
+
+</body>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JB Facturation Pro</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <img src="logo.png" class="logo">
+
+    <div class="company-info">
+        <h1>JB DIGITAL SERVICES</h1>
+        <p>Créer aujourd'hui et marquer demain</p>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <!-- ACTIONS -->
+    <div class="top-actions">
+        <button onclick="goDashboard()">📊 Dashboard</button>
+    </div>
+
+    <!-- FACTURE -->
+    <div class="invoice-card" id="facture">
+
+        <!-- EN TETE FACTURE PRO -->
+        <div class="pro-header">
+
+            <div class="company-block">
+
+               
+
+                <h2>JB DIGITAL SERVICES</h2>
+
+                <p>Créer aujourd'hui et marquer demain !</p>
+
+                <p>📞 +243999171354</p>
+
+                <p>jbdigitalservices245@gmail.com</p>
+
+                <p>Lubumbashi - RDC</p>
+
+            </div>
+
+            <div class="invoice-info">
+
+                <h2>FACTURE</h2>
+
+                <p><strong>N° :</strong> <span id="invoiceId"></span></p>
+
+                <p><strong>Date :</strong> <span id="date"></span></p>
+
+            </div>
+
+        </div>
+
+        <!-- EMETTEUR / CLIENT -->
+        <div class="invoice-parties">
+
+            <div class="party-box">
+
+                <h3>ÉMETTEUR</h3>
+
+                <p>JB DIGITAL SERVICES</p>
+
+                <p>Lubumbashi</p>
+
+                <p>+243999171354</p>
+
+                <p>jbdigitalservices245@gmail.com</p>
+
+            </div>
+
+            <div class="party-box">
+
+                <h3>CLIENT</h3>
+
+                <input id="client" placeholder="Nom du client">
+
+                <input id="phone" placeholder="Téléphone">
+
+                <input id="address" placeholder="Adresse">
+
+            </div>
+
+        </div>
+
+        <!-- DEVISE -->
+        <div class="currency-zone">
+
+            <label>Devise :</label>
+
+            <select id="currency" onchange="updateCurrency()">
+
+                <option value="$">USD ($)</option>
+
+                <option value="FC">CDF (FC)</option>
+
+            </select>
+
+        </div>
+
+        <!-- AJOUT ARTICLE -->
+        <div class="service-form pdf-hide">
+
+            <input id="qty" type="number" placeholder="Quantité">
+
+            <input id="desc" placeholder="Description du service">
+
+            <input id="price" type="number" placeholder="Prix unitaire">
+
+            <button onclick="addItem()">Ajouter</button>
+
+        </div>
+
+        <!-- TABLEAU FACTURE -->
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Quantité</th>
+                    <th>Description</th>
+                    <th>Prix Unitaire</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="list">
+
+            </tbody>
+
+        </table>
+
+        <!-- TOTAUX -->
+        <div class="totals-box">
+
+            <div class="total-line">
+                <span>Total </span>
+                <span id="subtotal">0</span>
+            </div>
+
+            <div class="total-line">
+                <span>Réduction (0%)</span>
+                <input type="number" id="discount"
+                value="0" min="0" max="100"
+                oninput="render()" style="width: 80px;">
+              
+            </div>
+
+            <div class="total-line grand-total">
+                <span>TOTAL À PAYER</span>
+                <span id="total">0</span>
+            </div>
+
+        </div>
+
+        <!-- REGLEMENT -->
+        <div class="payment-box">
+
+            <h3>RÈGLEMENT</h3>
+
+            <p>Mpesa          +243830022883 </p>
+
+            <p>Airtel Money   +243999171354</p>
+
+        </div>
+
+        <!-- MENTION -->
+        <div class="legal-box">
+
+            <p>
+                En cas de retard de paiement,
+                une indemnité de 10 % par jour
+                de retard ainsi que des frais
+                de recouvrement seront exigibles.
+            </p>
+
+        </div>
+
+        <!-- BOUTONS -->
+        <div class="buttons pdf-hide">
+
+            <button onclick="saveInvoice()">
+                💾 Sauvegarder
+            </button>
+
+            <button onclick="resetInvoice()">
+                🔄 Reset
+            </button>
+
+            <button onclick="downloadPDF()">
+                📄 PDF PRO
+            </button>
+
+            <button onclick="printInvoice()">
+                🖨️ Imprimer
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- LIBRAIRIES PDF -->
+<script src="html2canvas.min.js"></script>
+
+<script src="jspdf.umd.min.js"></script>
+<script src="https: // cdn. jsdeliver.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
